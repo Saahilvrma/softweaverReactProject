@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.image-gallery-icon .image-gallery-svg {
+    height: 40px !important;
+}
+aside#sidebar-multi-level-sidebar {
+    background-color: white !important;
+}
+.rdw-editor-main{
+    overflow: hidden  !important;
+}
