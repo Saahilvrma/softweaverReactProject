@@ -16,6 +16,8 @@ import Calendar from './pages/Calendar';
 
 function App() {
   return (
+    <>
+   <Sidebar />
     <Routes>
       <Route exact path='/sidebar' element={<Sidebar />} />
       <Route exact path="/artwork" element={<Artwork />} />
@@ -31,6 +33,7 @@ function App() {
       <Route exact path="/event/edit" element={<EditEvent/>} />
       <Route exact path="/calendar" element={<Calendar/>} />
     </Routes>
+    </>
   );
 }
 

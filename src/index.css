@@ -2,13 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .image-gallery-icon .image-gallery-svg {
-    height: 40px !important;
+  height: 40px !important;
 }
 aside#sidebar-multi-level-sidebar {
-    background-color: white !important;
+  background-color: white !important;
 }
-.rdw-editor-main{
-    overflow: hidden  !important;
+.rdw-editor-main {
+  overflow: hidden !important;
+}
+svg.Demo-cloud {
+  display: none !important;
+}
+svg.Demo-rain {
+  display: none !important;
+}
+svg.Demo-sun {
+  display: none !important;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.OpenButton-textButton.css-vnscjq-MuiButtonBase-root-MuiButton-root {
+  color: #000;
+  font-size: 28px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.MuiIconButton-root svg.css-i4bv87-MuiSvgIcon-root {
+  color: #000;
 }
