@@ -14,6 +14,7 @@ import EditEvent from './pages/EditEvent';
 import Calendar from './pages/Calendar';
 
 
+
 function App() {
   return (
     <>
@@ -32,6 +33,7 @@ function App() {
       <Route exact path="/email/send" element={<SendEmail/>} />
       <Route exact path="/event/edit" element={<EditEvent/>} />
       <Route exact path="/calendar" element={<Calendar/>} />
+    
     </Routes>
     </>
   );
