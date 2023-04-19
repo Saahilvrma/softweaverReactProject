@@ -54,7 +54,7 @@ export default function Artwork() {
                                     </svg>
 
                                 </div>
-                                <input type="text" id="voice-search" className="w-32 bg-transparent border-2 border-blue-500 text-black text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  pl-10 p-1  placeholder-white dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue="New Piece" readOnly />
+                                <input type="text" id="voice-search" className="cursor-pointer w-32 bg-transparent border-2 border-blue-500 text-black text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  pl-10 p-1  placeholder-white dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue="New Piece" readOnly />
                                 {/* <a href="/sidebar"  className="absolute inset-y-0 right-0 flex items-center pr-24">
 
                             </a> */}
@@ -135,23 +135,23 @@ export default function Artwork() {
                                     </select>
                                 </div>
                             </div>
-                           
+                          
                             <div className="ml-16 mt-12 col-span-2 ... flex">
                                     <ul className="mt-10 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
                                         <li className="mr-2 mt-2">
-                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Yellow</a>
+                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Yellow</a>
                                         </li>
                                         <li className="mr-2 mt-2">
-                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Red</a>
+                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Red</a>
                                         </li>
                                         <li className="mr-2 mt-2">
-                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Black</a>
+                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Black</a>
                                         </li>
                                         <li className="mr-2 mt-2">
-                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Bat</a>
+                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Bat</a>
                                         </li>
                                         <li className="mr-2 mt-2">
-                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Adam Handler</a>
+                                            <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Adam Handler</a>
                                         </li>
                                     </ul>
                                     <div className="">
@@ -212,19 +212,19 @@ export default function Artwork() {
                                                         </div>
                                                         <ul className="mt-4 ml-2 flex flex-wrap text-sm text-center text-gray-500 dark:text-gray-400 mb-14">
                                                             <li className="mr-2 mt-2">
-                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active " aria-current="page">Yellow</a>
+                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full   " aria-current="page">Yellow</a>
                                                             </li>
                                                             <li className="mr-2 mt-2">
-                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Red</a>
+                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Red</a>
                                                             </li>
                                                             <li className="mr-28 mt-2">
-                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Black</a>
+                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Black</a>
                                                             </li>
                                                             <li className="mr-2 mt-2">
-                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Bat</a>
+                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Bat</a>
                                                             </li>
                                                             <li className="mr-2 mt-2">
-                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Adam Handler</a>
+                                                                <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Adam Handler</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -282,79 +282,19 @@ export default function Artwork() {
                         <div className="ml-16 mt-12 col-span-2 ... flex">
                             <ul className="mt-10 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Yellow</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Yellow</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Red</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Red</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Black</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Black</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Bat</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Bat</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Adam Handler</a>
-                                </li>
-                            </ul>
-                            <div className="">
-                                <svg className="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                </svg>
-                                <svg className="mt-4 h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <line x1="9" y1="9" x2="15" y2="15" />  <line x1="15" y1="9" x2="9" y2="15" /></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-6 gap-6">
-
-                        <div className="col-span-1 ...">
-                            <div className="mt-5 mb-5 ml-4">
-                                <img className="h-40 rounded-lg w-64" src="/rose.jpg" alt="Girl in a jacket" />
-
-                            </div>
-                        </div>
-                        <div className="col-span-2 ...">
-                            <div className="mt-5 mb-5">
-                                <h2 className="text-3xl font-extrabold dark:text-white">Bat on Hearts</h2>
-                                <p className="my-2 text-md text-gray-700 mb-16">No Description</p>
-                                <a href="/" className="underline my-2 text-md text-gray-700">Acrylic and Oil Canvas</a> | <a href="/" className="underline my-2 text-md text-gray-700">Available</a> | <a href="/" className="underline my-2 text-md text-gray-700">$8,500.00</a>
-                            </div>
-                        </div>
-                        <div className="col-span-1 ... flex">
-                            <div className="heading">
-                                <p className="mt-14 text-md font-extrabold   text-black">Type</p>
-                                <p className="mt-2 text-md font-extrabold text-black">Size(inches)</p>
-                                <p className="mt-2 text-md font-extrabold text-black">Subject</p>
-                                <p className="mt-2 text-md font-extrabold text-black">Location</p>
-                            </div>
-                            <div className="data">
-                                <p className="mt-14 text-md  text-black ml-3">Painitng</p>
-                                <p className="mt-2 text-md  text-black ml-3">69w x 90h</p>
-                                <p className="mt-2 text-md  text-black ml-3">Nature,exoresion</p>
-                                <select className="text-md text-black bg-transparent border-none" >
-                                    <option>Your Inventory</option>
-                                    <option>One</option>
-                                    <option>Two</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div className="ml-16 mt-12 col-span-2 ... flex">
-                            <ul className="mt-10 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
-                                <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Yellow</a>
-                                </li>
-                                <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Red</a>
-                                </li>
-                                <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Black</a>
-                                </li>
-                                <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Bat</a>
-                                </li>
-                                <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Adam Handler</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Adam Handler</a>
                                 </li>
                             </ul>
                             <div className="">
@@ -402,19 +342,79 @@ export default function Artwork() {
                         <div className="ml-16 mt-12 col-span-2 ... flex">
                             <ul className="mt-10 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Yellow</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Yellow</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Red</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Red</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Black</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Black</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Bat</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Bat</a>
                                 </li>
                                 <li className="mr-2 mt-2">
-                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full active" aria-current="page">Adam Handler</a>
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Adam Handler</a>
+                                </li>
+                            </ul>
+                            <div className="">
+                                <svg className="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                </svg>
+                                <svg className="mt-4 h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <line x1="9" y1="9" x2="15" y2="15" />  <line x1="15" y1="9" x2="9" y2="15" /></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-6 gap-6">
+
+                        <div className="col-span-1 ...">
+                            <div className="mt-5 mb-5 ml-4">
+                                <img className="h-40 rounded-lg w-64" src="/rose.jpg" alt="Girl in a jacket" />
+
+                            </div>
+                        </div>
+                        <div className="col-span-2 ...">
+                            <div className="mt-5 mb-5">
+                                <h2 className="text-3xl font-extrabold dark:text-white">Bat on Hearts</h2>
+                                <p className="my-2 text-md text-gray-700 mb-16">No Description</p>
+                                <a href="/" className="underline my-2 text-md text-gray-700">Acrylic and Oil Canvas</a> | <a href="/" className="underline my-2 text-md text-gray-700">Available</a> | <a href="/" className="underline my-2 text-md text-gray-700">$8,500.00</a>
+                            </div>
+                        </div>
+                        <div className="col-span-1 ... flex">
+                            <div className="heading">
+                                <p className="mt-14 text-md font-extrabold   text-black">Type</p>
+                                <p className="mt-2 text-md font-extrabold text-black">Size(inches)</p>
+                                <p className="mt-2 text-md font-extrabold text-black">Subject</p>
+                                <p className="mt-2 text-md font-extrabold text-black">Location</p>
+                            </div>
+                            <div className="data">
+                                <p className="mt-14 text-md  text-black ml-3">Painitng</p>
+                                <p className="mt-2 text-md  text-black ml-3">69w x 90h</p>
+                                <p className="mt-2 text-md  text-black ml-3">Nature,exoresion</p>
+                                <select className="text-md text-black bg-transparent border-none" >
+                                    <option>Your Inventory</option>
+                                    <option>One</option>
+                                    <option>Two</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="ml-16 mt-12 col-span-2 ... flex">
+                            <ul className="mt-10 flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
+                                <li className="mr-2 mt-2">
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Yellow</a>
+                                </li>
+                                <li className="mr-2 mt-2">
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Red</a>
+                                </li>
+                                <li className="mr-2 mt-2">
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Black</a>
+                                </li>
+                                <li className="mr-2 mt-2">
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Bat</a>
+                                </li>
+                                <li className="mr-2 mt-2">
+                                    <a href="/" className="inline-block px-4 py-1.5 text-white bg-blue-600 rounded-full  " aria-current="page">Adam Handler</a>
                                 </li>
                             </ul>
                             <div className="">

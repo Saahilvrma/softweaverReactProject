@@ -29,3 +29,8 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 .MuiIconButton-root svg.css-i4bv87-MuiSvgIcon-root {
   color: #000;
 }
+.active{
+  border-right-width: 4px;
+  border-color:#3F83F8;
+  background-color: rgb(243 244 246);
+}

@@ -1,7 +1,10 @@
 
 import * as React from 'react'
 import { AxiosInstance } from '../utils'
+ 
 export default function AddArtwork() {
+
+
     React.useEffect(() => {
         async function getData() {
             const data= await AxiosInstance(
@@ -182,21 +185,22 @@ export default function AddArtwork() {
 
                                     <input type="text" className="flex items-center justify-between border-b-2 border-t-none italic border-blue-200 text-lg rounded-b-none divide-blue-400 sm:divide-x dark:divide-blue-400 w-full text-black bg-white focus:outline-0  rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="add_tag" defaultValue="Add Tags" />
                                     <div className="px-4 py-2 bg-white rounded-xl dark:bg-gray-800">
+                                      
                                         <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
                                             <li className="mr-2">
-                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full active" aria-current="page">Yellow</a>
+                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full " aria-current="page">Yellow</a>
                                             </li>
                                             <li className="mr-2">
-                                                <a href="/" className=" mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full active" aria-current="page">Red</a>
+                                                <a href="/" className=" mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full " aria-current="page">Red</a>
                                             </li>
                                             <li className="mr-2">
-                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full active" aria-current="page">Black</a>
+                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full " aria-current="page">Black</a>
                                             </li>
                                             <li className="mr-2">
-                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full active" aria-current="page">Bat</a>
+                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full " aria-current="page">Bat</a>
                                             </li>
                                             <li className="mr-2">
-                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full active" aria-current="page">Adam Handler</a>
+                                                <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full " aria-current="page">Adam Handler</a>
                                             </li>
 
 

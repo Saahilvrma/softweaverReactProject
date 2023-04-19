@@ -1,6 +1,24 @@
 import React from 'react'
+import { useLocation  } from 'react-router-dom'
+import {
+  
+    NavLink
+  } from 'react-router-dom';
 export default function Sidebar() {
+    const location = useLocation ();
+
+    //console.log(location.pathname.includes('artwork'));
+
+    if(location.pathname.includes('artwork')){
+       // console.log('Here');   
+    }
+    // const handleClick = event => {
+    //     event.currentTarget.style.backgroundColor = 'salmon';
+    //     event.currentTarget.style.color = 'white';
+    //   }
+
     return (
+       
         <>
 
             <nav className="min-[320px]:invisible min-[620px]:visible bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0">
@@ -24,87 +42,70 @@ export default function Sidebar() {
                 <div className="h-full px-3  overflow-y-auto bg-white-50 dark:bg-white-800">
                     <ul className="space-y-2 bg-white-50">
                         <li>
-                            <a href="/artwork" className="flex bg-gray-100 border-r-4 border-blue-500 items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100  dark:hover:bg-gray-700">
+                            <NavLink to="/artwork" id="artwork"   className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700") } >
                                 <svg className="h-5 w-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <circle cx="8.5" cy="8.5" r="1.5" />  <polyline points="21 15 16 10 5 21" /></svg>
                                 <span className="ml-3">Artwork</span>
-                            </a>
+                            </NavLink>
                         </li>
-                        {/* <li>
-            <button type="button" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                  <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd"></path></svg>
-                  <span className="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>E-commerce</span>
-                  <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-            </button>
-            <ul id="dropdown-example" className="hidden py-2 space-y-2">
-                  <li>
-                     <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a>
-                  </li>
-                  <li>
-                     <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a>
-                  </li>
-                  <li>
-                     <a href="#" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
-                  </li>
-            </ul>
-         </li> */}
+                    
                         <li>
-                            <a href="/" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <circle cx="12" cy="11" r="3" />  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">Locations</span>
 
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
 
                                 <span className="flex-1 ml-3 whitespace-nowrap">Exhibitions</span>
 
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/calendar" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to="/calendar"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <rect x="4" y="3" width="16" height="18" rx="2" />  <rect x="8" y="7" width="8" height="3" rx="1" />  <line x1="8" y1="14" x2="8" y2="14.01" />  <line x1="12" y1="14" x2="12" y2="14.01" />  <line x1="16" y1="14" x2="16" y2="14.01" />  <line x1="8" y1="17" x2="8" y2="17.01" />  <line x1="12" y1="17" x2="12" y2="17.01" />  <line x1="16" y1="17" x2="16" y2="17.01" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">Schedule</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/contact" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700") }>
                                 <svg className="h-5 w-5 text-black" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <rect x="3" y="4" width="18" height="16" rx="3" />  <circle cx="9" cy="10" r="2" />  <line x1="15" y1="8" x2="17" y2="8" />  <line x1="15" y1="12" x2="17" y2="12" />  <line x1="7" y1="16" x2="17" y2="16" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">Contacts</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to="/"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
 
                                 <span className="flex-1 ml-3 whitespace-nowrap">Income</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to="/"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
 
                                 <span className="flex-1 ml-3 whitespace-nowrap">Reports</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to="/"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <circle cx="8.5" cy="8.5" r="1.5" />  <polyline points="21 15 16 10 5 21" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">My Docs</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="/" className="flex items-center p-2 text-sm font-semibold text-black-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <NavLink to=""  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <circle cx="8.5" cy="8.5" r="1.5" />  <polyline points="21 15 16 10 5 21" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">Insights</span>
-                            </a>
+                            </NavLink>
                         </li>
                   
                     </ul>

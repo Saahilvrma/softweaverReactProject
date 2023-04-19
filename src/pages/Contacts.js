@@ -34,7 +34,7 @@ export default function Contacts() {
                                     </svg>
 
                                 </div>
-                                <input type="text" id="voice-search" className="w-32 bg-transparent border-2 border-blue-500 text-black text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  pl-8 p-1  placeholder-white dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue="New Contact" readOnly />
+                                <input type="text" id="voice-search" className="cursor-pointer w-32 bg-transparent border-2 border-blue-500 text-black text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block  pl-8 p-1  placeholder-white dark:placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue="New Contact" readOnly />
                                 <button type="button" className="absolute inset-y-0 right-0 flex items-center pr-24">
 
                                 </button>

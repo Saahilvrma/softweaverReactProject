@@ -50,17 +50,17 @@ export default function EditEvent() {
                                                 <ul  className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-8">
                                                     <li  className="mr-2 flex">
                                                         <img className="h-8 rounded-lg w-10" src="/rose.jpg" alt="Girl in a jacket" />
-                                                        <a href="/"  className="inline-block px-4 py-2 active text-black font-bold" aria-current="page">Bat on Heart</a>
+                                                        <a href="/"  className="inline-block px-4 py-2  text-black font-bold" aria-current="page">Bat on Heart</a>
                                                         <span className='mt-3 mr-4'> <RxCross2/></span>
                                                     </li>
                                                     <li  className="mr-2 flex">
                                                         <img className="h-8 rounded-lg w-10" src="/rose.jpg" alt="Girl in a jacket" />
-                                                        <a href="/"  className="inline-block px-4 py-2 active text-black font-bold" aria-current="page">Virtual Relief</a>
+                                                        <a href="/"  className="inline-block px-4 py-2  text-black font-bold" aria-current="page">Virtual Relief</a>
                                                         <span className='mt-3 mr-4'> <RxCross2/></span>
                                                     </li>
                                                     <li  className="mt-4 mr-2 flex">
                                                         <img className="h-8 rounded-lg w-10" src="/rose.jpg" alt="Girl in a jacket" />
-                                                        <a href="/"  className="inline-block px-4 py-2 active text-black font-bold" aria-current="page">Personality Inventory #1</a>
+                                                        <a href="/"  className="inline-block px-4 py-2  text-black font-bold" aria-current="page">Personality Inventory #1</a>
                                                         <span className='mt-3 mr-4'> <RxCross2/></span>
                                                     </li>
                                                     
@@ -84,12 +84,12 @@ export default function EditEvent() {
                                                 <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-8">
                                                     <li className="mr-2 flex">
                                                         <img className="h-8 rounded-full w-8 mt-3" src="/rose.jpg" alt="Girl in a jacket" />
-                                                        <a href="/"  className="mt-2 inline-block px-4 py-2 active text-black font-bold" aria-current="page">Rose Wells</a>
+                                                        <a href="/"  className="mt-2 inline-block px-4 py-2  text-black font-bold" aria-current="page">Rose Wells</a>
                                                         <span className='mt-5 mr-4'> <RxCross2/></span>
                                                     </li>
                                                     <li className="mr-2 flex">
                                                         <img className="h-8 rounded-full w-8 mt-3" src="/rose.jpg" alt="Girl in a jacket" />
-                                                        <a href="/"  className="mt-2 inline-block px-4 py-2 active text-black font-bold" aria-current="page">Dexter James</a>
+                                                        <a href="/"  className="mt-2 inline-block px-4 py-2  text-black font-bold" aria-current="page">Dexter James</a>
                                                         <span className='mt-5 mr-4'> <RxCross2/></span>
                                                     </li>                       
                                                 </ul>

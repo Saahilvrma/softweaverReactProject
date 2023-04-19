@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import Artwork from './pages/Artwork';
 import Sidebar from './components/Sidebar';
 import Login from './pages/Login';
