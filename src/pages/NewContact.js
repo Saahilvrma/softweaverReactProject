@@ -8,20 +8,13 @@ import { CiCircleRemove } from "react-icons/ci";
 import { useForm, useFieldArray , Controller } from "react-hook-form";
 
 export default function NewContact() {
-    // const { control,register, handleSubmit, formState: { errors } } = useForm();
-    // const onSubmit = data => console.log(data);
 
-    // const { fields, prepend, append ,insert, remove } = useFieldArray({
-    //     control,} = useFieldArray({
-    //     name: 'test',
-    //     control,
-    // });
-    const { register, control, handleSubmit, formState: { errors } } = useForm({
+      const { register, control, handleSubmit, formState: { errors } } = useForm({
         // defaultValues: {}; you can populate the fields by this attribute 
       });
       const { fields, append, remove } = useFieldArray({
         control,
-        name: "test"
+        name: "emails"
       });
       const { fields:fieldsForPhone, append:appendForPhone, remove:removeForPhone } = useFieldArray({
         control,
@@ -29,9 +22,13 @@ export default function NewContact() {
       });
       const { fields:fieldsForWebsite, append:appendForWebsite, remove:removeForWebsite } = useFieldArray({
         control,
-        name: "test2"
+        name: "websites"
       });
-// console.log(fieldsForPhone)
+      const { fields:fieldsForAddress, append:appendForAddress, remove:removeForAddress } = useFieldArray({
+        control,
+        name: "address"
+      });
+
     
     return (
         <>
@@ -103,13 +100,13 @@ export default function NewContact() {
                                                         <li key={item.id}>
                                                             <div className='flex mt-4 justify-between items-center'>
                                                             <span className='mt-6 mr-4'><IoMdMail size={30} color='gray' /></span>
-                                                            <select name={`test.${index}.type`}  className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" control={control}>
+                                                            <select name={`emails.${index}.type`}  className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" control={control}>
                                                             <option value="work">Work</option>
                                                             <option value="personal">Personal</option>
                                                             </select>
                                                             <Controller
                                                             render={({ field }) => <input className="text-black  h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field}  placeholder='E-mail'/>}
-                                                            name={`test.${index}.email`} 
+                                                            name={`emails.${index}.email`} 
                                                             control={control}
                                                             />
                                                             <button type="button" onClick={() => remove(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
@@ -145,7 +142,7 @@ export default function NewContact() {
                                                                 <option >Personal</option>
                                                             </select>
                                                             <Controller
-                                                            render={({ field }) => <input className="text-black  h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field}  placeholder='E-mail'/>}
+                                                            render={({ field }) => <input className="text-black  h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field}  placeholder='Phone Number'/>}
                                                             name={`phoneNumber.${index}.phone`} 
                                                             control={control}
                                                             />
@@ -161,7 +158,7 @@ export default function NewContact() {
                                                 </ul>
                                             
                                                 <button className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2" type="button"
-                                                    onClick={() => appendForPhone({ phone:"Phone Number", typeoOF: "work" })}>+ Add Phone Number</button> 
+                                                    onClick={() => appendForPhone({ phone:"", typeoOF: "work" })}>+ Add Phone Number</button> 
 
 
                                                 <div className='flex mt-2 justify-between items-center'>
@@ -177,8 +174,8 @@ export default function NewContact() {
                                                 {errors.Website && <span className='text-red-500 ml-12'>Website is required</span>}
                                                 {/* <p className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2"> + Add Website</p> */}
                                                 <ul>
-                                                    {fieldsForWebsite?.map((item2, index) => (
-                                                        <li key={item2.id}>
+                                                    {fieldsForWebsite?.map((item, index) => (
+                                                        <li key={item.id}>
                                                             <div className='flex mt-4 justify-between items-center'>
                                                             <span className='mt-6 mr-4'><IoIosLink size={30} color='gray' /></span>
                                                             <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -186,10 +183,15 @@ export default function NewContact() {
                                                                 <option >Personal</option>
                                                             </select>
                                                             <Controller
+                                                            render={({ field }) => <input className="text-black  h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field}  placeholder='Website'/>}
+                                                            name={`websites.${index}.website`} 
+                                                            control={control}
+                                                            />
+                                                            {/* <Controller
                                                             render={({ field2 }) => <input className="text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2 h-11" {...field2}  placeholder='Website'/>}
                                                             name={`test2.${index}.webistes`} 
                                                             control={control}
-                                                            />
+                                                            /> */}
                                                             <button type="button" onClick={() => removeForWebsite(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
                                                             </div>
                                                         </li>
@@ -245,7 +247,53 @@ export default function NewContact() {
                                                 </div>
                                                 {errors.StreetAddress1 && <span className='text-red-500 ml-12'>Street Address is required</span>}
                                                 {errors.Zip && <span className='text-red-500 ml-12'>Zip is required</span>}
-                                                <p className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2">+ Add Address</p>
+                                                {/* <p className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2">+ Add Address</p> */}
+                                                <ul>
+                                                    {fieldsForAddress.map((item, index) => (
+                                                        <li key={item.id}>
+                                                            <div className='flex mt-4 justify-between items-center'>
+                                                            <span className='mt-6 mr-4'><IoIosHome size={30} color='gray' /></span>
+                                                            <select name={`emails.${index}.type`}  className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" control={control}>
+                                                            <option value="work">Work</option>
+                                                            <option value="personal">Personal</option>
+                                                            </select>
+                                                            <div className="ml-2 mt-4">
+                                                                <Controller
+                                                                render={({ field }) => <input className="w-full text-black bg-white border-b-2 border-l-2  border-r-2  border-t-2 border-blue-200 focus:outline-0  italic rounded-t-lg text-md px-4 py-2 " placeholder="Street address line 1"  {...field}  />}
+                                                                name={`addresses.${index}.streetaddress1`} 
+                                                                control={control}
+                                                                />
+                                                                <Controller
+                                                                render={({ field }) => <input  className="w-full text-black bg-white border-t-0 border-b-2  border-l-2  border-r-2 border-blue-200  focus:outline-0  italic  text-md px-4 py-2" placeholder="Street address line 2"   {...field}  />}
+                                                                name={`addresses.${index}.streetaddress2`} 
+                                                                control={control}
+                                                                />
+                                                                <Controller
+                                                                render={({ field }) => <input className="w-full text-black bg-white border-t-0 border-b-2  border-l-2  border-r-2 border-blue-200 focus:outline-0  italic  text-md px-4 py-2" placeholder="New York"  {...field}  />}
+                                                                name={`addresses.${index}.newyork`} 
+                                                                control={control}
+                                                                />
+                                                                <Controller
+                                                                render={({ field }) => <input  className="bg-white border-l-2 border-t-0 border-b-2 hover:bg-white border-blue-200 italic text-gray-500 py-2 px-4 border-t-none rounded-b-lg  rounded-r-none w-1/2" placeholder="NY"  {...field}  />}
+                                                                name={`addresses.${index}.ny`} 
+                                                                control={control}
+                                                                /> 
+                                                                <Controller
+                                                                render={({ field }) => <input  className="bg-white border-r-2 border-t-0 border-b-2 hover:bg-white border-blue-200 italic text-gray-500 py-2 px-4 border-t-none rounded-b-lg  rounded-l-none w-1/2" placeholder="10011"  {...field}  />}
+                                                                name={`addresses.${index}.zip`} 
+                                                                control={control}
+                                                                />
+                                                            </div>
+                                                            <button type="button" onClick={() => removeForAddress(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
+                                                            </div>
+                                                        </li>
+                                                    ))} 
+                                                </ul>
+                                            
+                                                <button className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2" type="button"
+                                                    onClick={() => appendForAddress({ email: "", type: "work" })}>+ Add Address</button>
+                                               
+                                               
                                                 <div className="min-[480px]:ml-12 mt-6 w-10/12 mb-4 border-2 border-blue-200  rounded-xl bg-white dark:bg-white dark:border-blue-600">
                                                     <div className="flex items-center justify-between px-3 py-2 border-b-2  border-blue-200 ">
                                                         <div className="flex flex-wrap items-center divide-blue-400 sm:divide-x dark:divide-blue-400">
