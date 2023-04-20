@@ -23,7 +23,15 @@ export default function NewContact() {
         control,
         name: "test"
       });
-
+      const { fields:fieldsForPhone, append:appendForPhone, remove:removeForPhone } = useFieldArray({
+        control,
+        name: "phoneNumber"
+      });
+      const { fields:fieldsForWebsite, append:appendForWebsite, remove:removeForWebsite } = useFieldArray({
+        control,
+        name: "test2"
+      });
+// console.log(fieldsForPhone)
     
     return (
         <>
@@ -64,7 +72,7 @@ export default function NewContact() {
                                                     <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                         <option >Personal</option>
                                                         <option >Work</option>
-                                                        </select>
+                                                    </select>
                                                     </div>
                                                     <input type="text" {...register("Email", {
                                                         required: {
@@ -85,41 +93,34 @@ export default function NewContact() {
                                                     <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                         <option >Work</option>
                                                         <option >Personal</option>
-                                                        </select>
-                                                    <input type="text" className="text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60     ml-2" name="medium" placeholder="E-mail" />
+                                                    </select>
+                                                    <input type="text" className="text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60  ml-2" {...register("EmailSecond")} placeholder="E-mail" />
                                                     <span className='mt-3 ml-1'><CiCircleRemove size={20} color='DodgerBlue' /></span>
 
                                                 </div>
                                                 <ul>
                                                     {fields.map((item, index) => (
-                                                    <li key={item.id}>
-                                                        <div className='flex mt-4 justify-between items-center'>
-                                                        <span className='mt-6 mr-4'><IoMdMail size={30} color='gray' /></span>
-                                                        <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                        <option >Work</option>
-                                                        <option >Personal</option>
-                                                        </select>
-                                                        <Controller
-                                                        render={({ field }) => <input className="text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field}  placeholder='E-mail'/>}
-                                                        name={`test.${index}.email`} 
-                                                        control={control}
-                                                        />
-                                                        <button type="button" onClick={() => remove(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
-                                                        </div>
-                                                    </li>
+                                                        <li key={item.id}>
+                                                            <div className='flex mt-4 justify-between items-center'>
+                                                            <span className='mt-6 mr-4'><IoMdMail size={30} color='gray' /></span>
+                                                            <select name={`test.${index}.type`}  className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" control={control}>
+                                                            <option value="work">Work</option>
+                                                            <option value="personal">Personal</option>
+                                                            </select>
+                                                            <Controller
+                                                            render={({ field }) => <input className="text-black  h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field}  placeholder='E-mail'/>}
+                                                            name={`test.${index}.email`} 
+                                                            control={control}
+                                                            />
+                                                            <button type="button" onClick={() => remove(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
+                                                            </div>
+                                                        </li>
                                                     ))}
                                                 </ul>
-                                                {/* <button
-                                                    type="button"
-                                                    onClick={() => append({ firstName: "bill", lastName: "luo" })}
-                                                >
-                                                    append
-                                                </button> */}
+                                            
                                                 <button className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2" type="button"
-                                                    onClick={() => append({ email: "E-mail", type: "work" })}>+ Add Email</button>
-                                                <div id="children-pane">
-
-                                                </div>
+                                                    onClick={() => append({ email: "", type: "work" })}>+ Add Email</button>
+                                                
                                                 <div className='flex mt-2 justify-between items-center'>
                                                     <span className='mt-6 mr-4'><IoIosCall size={30} color='gray' /></span>
                                                     <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -131,7 +132,38 @@ export default function NewContact() {
 
                                                 </div>
                                                 {errors.PhoneNumber && <span className='text-red-500 ml-12'> {errors.PhoneNumber?.type === 'required' ? 'Phone Number is required' : 'Phone number must not be more than 10 digits'}</span>}
-                                                <p className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2">+ Add Phone Number</p>
+                                                {/* <p className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2">+ Add Phone Number</p> */}
+
+
+                                                 <ul>
+                                                    {fieldsForPhone?.map((item, index) => (
+                                                        <li key={item.id}>
+                                                            <div className='flex mt-4 justify-between items-center'>
+                                                            <span className='mt-6 mr-4'><IoIosCall size={30} color='gray' /></span>
+                                                            <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                <option >Work</option>
+                                                                <option >Personal</option>
+                                                            </select>
+                                                            <Controller
+                                                            render={({ field }) => <input className="text-black  h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field}  placeholder='E-mail'/>}
+                                                            name={`phoneNumber.${index}.phone`} 
+                                                            control={control}
+                                                            />
+                                                            {/* <Controller
+                                                            render={({ field1 }) => <input className="text-black h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field1}  placeholder='Phone Number'/>}
+                                                            name={`test1.${index1}.phone`} 
+                                                            control={control}
+                                                            /> */}
+                                                            <button type="button" onClick={() => removeForPhone(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
+                                                            </div>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            
+                                                <button className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2" type="button"
+                                                    onClick={() => appendForPhone({ phone:"Phone Number", typeoOF: "work" })}>+ Add Phone Number</button> 
+
+
                                                 <div className='flex mt-2 justify-between items-center'>
                                                     <span className='mt-6 mr-4'><IoIosLink size={30} color='gray' /></span>
                                                     <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -143,22 +175,45 @@ export default function NewContact() {
 
                                                 </div>
                                                 {errors.Website && <span className='text-red-500 ml-12'>Website is required</span>}
-                                                <p className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2">+ Add Website</p>
+                                                {/* <p className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2"> + Add Website</p> */}
+                                                <ul>
+                                                    {fieldsForWebsite?.map((item2, index) => (
+                                                        <li key={item2.id}>
+                                                            <div className='flex mt-4 justify-between items-center'>
+                                                            <span className='mt-6 mr-4'><IoIosLink size={30} color='gray' /></span>
+                                                            <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                <option >Work</option>
+                                                                <option >Personal</option>
+                                                            </select>
+                                                            <Controller
+                                                            render={({ field2 }) => <input className="text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2 h-11" {...field2}  placeholder='Website'/>}
+                                                            name={`test2.${index}.webistes`} 
+                                                            control={control}
+                                                            />
+                                                            <button type="button" onClick={() => removeForWebsite(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
+                                                            </div>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            
+                                                <button className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2" type="button"
+                                                    onClick={() => appendForWebsite({ website:"", typeoOF: "work" })}>+ Add Website</button> 
+
                                                 <div className="ml-12 min-[480px]:grid grid-cols-2 gap-2 mt-8">
                                                     <div className="">
                                                         <p className="text-sm font-bold text-gray-700 ml-5">Birthday</p>
                                                         <div className="inline-flex mr-4 mt-4 mb-4">
-                                                            <input type="text" className="bg-white border-l-2 border-t-2 border-b-2 hover:bg-white border-blue-200  text-gray-500 py-2 px-4  rounded-l-lg w-14" placeholder='M' />
-                                                            <input type="text" className="bg-white border-2 hover:bg-white border-blue-200 text-gray-500 py-2 px-4 w-14" placeholder='D' />
-                                                            <input type="text" className="bg-white border-r-2 border-t-2 border-b-2 border-blue-200 hover:bg-white text-gray-500  py-2 px-4  rounded-r-lg w-14" placeholder='YY' />
+                                                            <input type="text" className="bg-white border-l-2 border-t-2 border-b-2 hover:bg-white border-blue-200  text-gray-500 py-2 px-4  rounded-l-lg w-14" {...register("BirthDateMonth")} placeholder='M' />
+                                                            <input type="text" className="bg-white border-2 hover:bg-white border-blue-200 text-gray-500 py-2 px-4 w-14" {...register("BirthDateDay")}  placeholder='D' />
+                                                            <input type="text" className="bg-white border-r-2 border-t-2 border-b-2 border-blue-200 hover:bg-white text-gray-500  py-2 px-4  rounded-r-lg w-14" {...register("BirthDateYear")} placeholder='YY' />
                                                         </div>
                                                     </div>
                                                     <div className="">
                                                         <p className="text-sm font-bold text-gray-700 ml-5">Death Date</p>
                                                         <div className="inline-flex mr-4 mt-4 mb-4">
-                                                            <input type="text" className="bg-white border-l-2 border-t-2 border-b-2 hover:bg-white border-blue-200  text-gray-500 py-2 px-4  rounded-l-lg w-14" placeholder='M' />
-                                                            <input type="text" className="bg-white border-2 hover:bg-white border-blue-200 text-gray-500 py-2 px-4 w-14" placeholder='D' />
-                                                            <input type="text" className="bg-white border-r-2 border-t-2 border-b-2 border-blue-200 hover:bg-white text-gray-500  py-2 px-4  rounded-r-lg w-14" placeholder='YY' />
+                                                            <input type="text" className="bg-white border-l-2 border-t-2 border-b-2 hover:bg-white border-blue-200  text-gray-500 py-2 px-4  rounded-l-lg w-14" {...register("DeathDateMonth")} placeholder='M' />
+                                                            <input type="text" className="bg-white border-2 hover:bg-white border-blue-200 text-gray-500 py-2 px-4 w-14" {...register("DeathDateDay")} placeholder='D' />
+                                                            <input type="text" className="bg-white border-r-2 border-t-2 border-b-2 border-blue-200 hover:bg-white text-gray-500  py-2 px-4  rounded-r-lg w-14" {...register("DeathDateYear")} placeholder='YY' />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -220,9 +275,6 @@ export default function NewContact() {
                                                 <button type="submit" className="ml-12 flex items-center gap-1 p-2 font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-800">
                                                     Add contact
                                                 </button>
-
-
-
 
                                             </div>
 
