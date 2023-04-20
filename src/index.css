@@ -29,8 +29,48 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 .MuiIconButton-root svg.css-i4bv87-MuiSvgIcon-root {
   color: #000;
 }
-.active{
+.active {
   border-right-width: 4px;
-  border-color:#3F83F8;
+  border-color: #3f83f8;
   background-color: rgb(243 244 246);
+}
+.customSelect {
+  width: 100%;
+}
+
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") !important;
+  background-repeat: no-repeat;
+}
+
+.btn-form {
+  color: white !important;
+  padding: 5px 30px;
+  font-size: 20px;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+}
+.btn-form-submit {
+  background-color: #37c963 !important;
+}
+.btn-form-cancel {
+  background-color: #c5c5c5 !important;
+}
+.form-action-row {
+  margin-bottom: 60px;
+}
+.cutBtn {
+  position: relative;
+  /* right: 7px; */
+  top: 21px;
+  background: white;
+  padding-right: 7px;
+  padding-left: 7px;
+}
+
+.dropZoneImg {
+  height: unset !important;
 }

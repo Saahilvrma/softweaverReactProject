@@ -1,13 +1,13 @@
-
 import * as React from 'react'
 import { AxiosInstance } from '../utils'
- 
+import { useForm } from "react-hook-form";
+import MyDropzone from '../components/DropZone.js'
 export default function AddArtwork() {
-
+    const [files, setFiles] = React.useState([]);
 
     React.useEffect(() => {
         async function getData() {
-            const data= await AxiosInstance(
+            const data = await AxiosInstance(
                 {
                     'url': '/hi',
                     'method': 'get'
@@ -16,6 +16,13 @@ export default function AddArtwork() {
         }
         getData()
     }, [])
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
+    const handleImages = {
+        files,
+        setFiles,
+    }
     return (
 
         <>
@@ -27,43 +34,32 @@ export default function AddArtwork() {
                     <h2 className="text-sm font-bold text-black mb-4">Upload Image</h2>
 
 
-                    <div className="min-[480px]:grid  grid-cols-4 min-[480px]:max-[992px]:gap-0 gap-8 border-2 border-blue-500 rounded-md">
-
-                        <div className="mt-5 mb-5 ml-8 max-[480px]:mr-8">
-                            <img className="h-44 rounded-lg w-64 Max-[480px]:w-32 max-[768px]:h-32" src="/rose.jpg" alt="Girl in a jacket" />
-
-                        </div>
-                        <div className="col-span-3 align-middle mt-5 mb-5 mr-8 min-[480px]:max-[992px]:ml-4 ">
-                            <a href="/" className="w-full flex flex-col items-center bg-white border-1 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-blue-700 dark:bg-gray-1200 dark:hover:bg-gray-700 ">
-                                <div className="flex items-center justify-center w-full max-[768px]:w-34">
-                                    <label htmlFor="dropzone-file" className="max-[480px]:ml-8 flex flex-col items-center bg-blue-100 justify-center w-full h-34 border-2 border-blue-400  rounded-lg cursor-pointer  dark:hover:bg-blue-100 dark:bg-gray-700 hover:bg-blue-100 dark:border-gray-600 dark:hover:border-gray-500">
-                                        <div className="flex flex-col items-center justify-center pt-5 pb-6 max-[768px]:py-2 max-[768px]:text-center">
-                                            <p className="text-sm font-bold text-black max-[768px]:text-xs">Drag and drop your art here to Add more Images</p>
-                                            <p className="text-sm font-bold text-black dark:text-gray-400 my-6 max-[768px]:text-xs max-[768px]:my-2">or</p>
-                                            <p className="text-white bg-blue-500 focus:ring-2 focus:ring-blue-500 font-medium rounded-full  px-7 mr-2 mb-2 dark:bg-blue-400 dark:hover:bg-blue-400 focus:outline-none dark:focus:ring-blue-500 py-1.5 max-[768px]:text-xs max-[768px]:py-1.5 max-[768px]:px-2.5">Choose a File</p>
-                                        </div>
-                                        <input id="dropzone-file" type="file" className="hidden" />
-                                    </label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <MyDropzone {...handleImages} multiple={false} />
 
 
                     <div className="w-full">
-                        <form className='min-[480px]:grid grid-cols-2 gap-12'>
+                        <form className='min-[480px]:grid grid-cols-2 gap-12' onSubmit={handleSubmit(onSubmit)} id="artWorkForm">
                             <div className="">
 
                                 <div className="w-full mt-12   bg-white dark:bg-white dark:border-blue-600">
 
-                                    <input type="text" className="flex items-center justify-between border-2  border-blue-200 rounded-t-xl rounded-b-none divide-blue-400 sm:divide-x dark:divide-blue-400 w-full text-black bg-white focus:outline-0  font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="add_tag" defaultValue="Bat on Hearts" />
+                                    <input  {...register("Title", { required: true })} type="text" className="flex items-center justify-between border-2 italic border-blue-200 text-lg rounded-b-none divide-blue-400 sm:divide-x dark:divide-blue-400 w-full text-black bg-white focus:outline-0  rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" defaultValue="" placeholder='Add Title' />
+                                   
                                     <div className="px-4 py-2 border-l-2 border-r-2 border-b-2 border-blue-200 bg-white rounded-b-lg dark:bg-gray-800">
-                                        <textarea id="editor" rows="4" className="border-none block italic w-full px-0 focus:outline-0 text-md text-gray-800 bg-white focus:ring-0 dark:text-white dark:placeholder-gray-700" placeholder="Add Description"></textarea>
+                                        <textarea {...register("Description", {
+                                            required: true,
+                                        })}
+
+                                            id="editor" rows="4" className="border-none block italic w-full px-0 focus:outline-0 text-md text-gray-800 bg-white focus:ring-0 dark:text-white dark:placeholder-gray-700" placeholder="Add Description" ></textarea>
+
                                     </div>
+                                    {errors.Title && <span className='text-red-500'>This filed is required </span>}
+                                    {errors.Description && <span className='text-red-500'> This field is required</span>}
+                                    
                                 </div>
 
                                 <h2 className="mb-2 text-sm font-bold text-gray-700 dark:text-white pt-5 ml-5">Type</h2>
-                                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownDelay" className="w-full text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Painting<svg className="ml-96 w-4 h-4 " aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                                {/* <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownDelay" className="w-full text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Painting<svg className="ml-96 w-4 h-4 " aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                 <div id="dropdownDelay" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-64 dark:bg-gray-700">
                                     <ul className="text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDelayButton">
                                         <li>
@@ -79,12 +75,31 @@ export default function AddArtwork() {
                                             <a href="/" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> */}
 
-                                <input type="text" className="w-full text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="medium" defaultValue="Acrylic and Oil on Canvas" />
-                                <input type="text" className="w-full text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="medium" defaultValue="Nature, Expression" />
-                                <input type="text" className="w-full text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="medium" defaultValue="Your Inventory " />
+                                <select defaultValue="" {...register("Type", {
+                                    required: true
+                                })}
+                                    className="w-full text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600 customSelect" >
+                                    <option className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" selected >Painting</option>
+                                </select>
+                                {errors.Type && <span className='text-red-500'>This field is required</span>}
+                                <input {...register("acrylicAndOil", {
+                                    required: true
+                                })}
+                                    type="text" className="w-full text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="medium" defaultValue="Acrylic and Oil on Canvas" />
+                                {errors.acrylicAndOil && <span className='text-red-500'>This field is required</span>}
 
+                                <input {...register("natureExpression", {
+                                    required: true
+                                })}
+                                    type="text" className="w-full text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="medium" defaultValue="Nature, Expression" />
+                                {errors.natureExpression && <span className='text-red-500'>This filed is required</span>}
+
+                                <input type="text" {...register("Inventory", {
+                                    required: true
+                                })} className="w-full text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="medium" defaultValue="Your Inventory " />
+                                {errors.Inventory && <span className='text-red-500'>This field is required</span>}
 
                                 <div className="min-[480px]:grid grid-cols-2 gap-12 mt-8">
                                     <div className="">
@@ -185,7 +200,7 @@ export default function AddArtwork() {
 
                                     <input type="text" className="flex items-center justify-between border-b-2 border-t-none italic border-blue-200 text-lg rounded-b-none divide-blue-400 sm:divide-x dark:divide-blue-400 w-full text-black bg-white focus:outline-0  rounded-lg text-md px-4 py-2.5  dark:bg-blue-600" name="add_tag" defaultValue="Add Tags" />
                                     <div className="px-4 py-2 bg-white rounded-xl dark:bg-gray-800">
-                                      
+
                                         <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
                                             <li className="mr-2">
                                                 <a href="/" className="mt-2 inline-block px-4 py-2 text-white bg-blue-600 rounded-full " aria-current="page">Yellow</a>
@@ -207,32 +222,24 @@ export default function AddArtwork() {
                                         </ul>
                                     </div>
                                 </div>
-
-
-
-
                                 <p className="text-sm font-bold text-gray-700 mt-6 ml-5 ">Editions</p>
                                 <input type="checkbox" className="max-[768px]:mb-6 min-[480px]:max-[992px]:mt-0  ml-10 mr-10 text-blue-500  border-2 border-blue-500 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold text-md   dark:bg-blue-600" name="medium" />
                                 <input className=" text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold w-14 rounded-lg text-md py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-6 min-[480px]:mr-1 max-[992px]:mr-1 " type="text" defaultValue="13"></input>
                                 /
                                 <input className=" text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold w-14 rounded-lg text-md py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-6 min-[480px]:ml-1 max-[992px]:ml-1" type="text" defaultValue="50"></input>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
                         </form>
+
+
                     </div>
 
+                    <div className="row form-action-row">
+                        <div className="col float-right ml-5"><button className='btn btn-success btn-form btn-form-submit' form="artWorkForm" onClick={() => {
 
+                        }}>Submit</button></div>
+                        <div className="col float-right "><button className='btn btn-success btn-form btn-form-cancel'>Cancel</button></div>
+
+                    </div>
 
                 </div>
             </div>

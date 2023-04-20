@@ -49,14 +49,14 @@ export default function Sidebar() {
                         </li>
                     
                         <li>
-                            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
+                            <NavLink to="/location" className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z" />  <circle cx="12" cy="11" r="3" />  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">Locations</span>
 
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
+                            <NavLink to="/exhibitons" className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
@@ -78,7 +78,7 @@ export default function Sidebar() {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
+                            <NavLink to="/income"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -87,7 +87,7 @@ export default function Sidebar() {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
+                            <NavLink to="/reports"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -96,13 +96,13 @@ export default function Sidebar() {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
+                            <NavLink to="/mydocs"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <circle cx="8.5" cy="8.5" r="1.5" />  <polyline points="21 15 16 10 5 21" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">My Docs</span>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to=""  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
+                            <NavLink to="/insights"  className={({ isActive }) => (isActive ? 'active' : 'inactive').concat(" ","flex items-center p-2 text-sm font-semibold text-black-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700")}>
                                 <svg className="h-5 w-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <circle cx="8.5" cy="8.5" r="1.5" />  <polyline points="21 15 16 10 5 21" /></svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap">Insights</span>
                             </NavLink>
