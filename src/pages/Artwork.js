@@ -184,8 +184,8 @@ export default function Artwork() {
                                                     <div className="mt-5 mb-5 ml-8">
 
                                                         <span className='flex'><p className='text-lg font-extrabold ml-2'>Bat on Hearts</p>
-                                                        <span className='top-5 right-12 absolute'> <FiEdit2 /></span>
-                                                        <span className='top-4 right-4 absolute' color="gray" onClick={handleOnClose}>X</span>
+                                                        <span className='top-5 right-12 absolute cursor-pointer'> <FiEdit2 /></span>
+                                                        <span className='top-4 right-4 absolute cursor-pointer' color="gray" onClick={handleOnClose}>X</span>
                                                         </span>
                                                         <p className='text-sm ml-2'>No Description</p>
                                                         
