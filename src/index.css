@@ -77,3 +77,52 @@ select {
 .hauser{
   width: 87.666667% !important;
 }
+input.ReactTags__tagInputField {
+  width: 100% !important;
+  /* border: none; */
+      font-style: italic;
+          border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-color: rgb(195 221 253 / var(--tw-border-opacity));
+  border-width: 2px;
+  border-radius: 9px 9px 0px 0px;
+}
+span.tag-wrapper.ReactTags__tag {
+  color:white;
+  background-color: rgb(28 100 242 / var(--tw-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 9999px;
+  margin: 4px;
+}
+.ReactTags__selected {
+margin-top:10px;
+}
+.ReactTags__tags.react-tags-wrapper {
+line-height: 45px;
+}
+.tagLable{
+    color: dodgerblue;
+  position: relative;
+  bottom: 47px;
+  left: 300px;
+}
+.relative.h-full.w-full.p-4.md\:h-auto.max-w-sm {
+  width: 17% !important;
+  margin-left: 80%;
+    margin-top: 20%;
+
+}
+.right-side{
+  right:100px;
+  bottom:6px;
+
+}

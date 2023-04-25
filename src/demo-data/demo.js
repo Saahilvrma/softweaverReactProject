@@ -303,8 +303,7 @@ const AppointmentContent = (({ ...restProps }) => (
 const FlexibleSpace = (({ ...restProps }) => (
   <StyledToolbarFlexibleSpace {...restProps} className={classes.flexibleSpace}>
     <div className={classes.flexContainer}>
-      {/* <ColorLens fontSize="large" htmlColor="#FF7043" /> */}
-      {/* <Typography variant="h5" style={{ marginLeft: '10px' }}>Art Index</Typography> */}
+     
     </div>
   </StyledToolbarFlexibleSpace>
 ));

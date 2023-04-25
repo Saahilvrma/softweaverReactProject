@@ -14,9 +14,7 @@ export default function Settings() {
             </div>
         
         </div>
-       
-
-
+ 
         <div className="p-4 border-1 border-blue-400 border-dashed mx-6 rounded-lg dark:border-blue-700 h-full top-20 bg-white">
             <div className="min-[1026px]:m-20 min-[1026px]:mt-44" >
 
