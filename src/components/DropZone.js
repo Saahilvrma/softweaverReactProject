@@ -48,8 +48,9 @@ function MyDropzone(props) {
 
     }
     const removeImage = (index) => {
-
-        setFiles(files);
+        
+        setFiles([])
+        // setFiles(files);
     };
 
     const { getRootProps,
@@ -103,7 +104,6 @@ function MyDropzone(props) {
 
     return (
         <>
-
             <div className="min-[480px]:grid  grid-cols-4 min-[480px]:max-[992px]:gap-0 gap-8 border-2 border-blue-500 rounded-md">
 
                 <div className="mt-5 mb-5 ml-8 max-[480px]:mr-8">
@@ -115,10 +115,10 @@ function MyDropzone(props) {
                         <div className="flex items-center justify-center w-full max-[768px]:w-34">
                             <label htmlFor="dropzone-file" className="max-[480px]:ml-8 flex flex-col items-center bg-blue-100 justify-center w-full h-34 border-2 border-blue-400  rounded-lg cursor-pointer  dark:hover:bg-blue-100 dark:bg-gray-700 hover:bg-blue-100 dark:border-gray-600 dark:hover:border-gray-500">
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6 max-[768px]:py-2 max-[768px]:text-center">
-                                    <p className="text-sm font-bold text-black max-[768px]:text-xs">Drag and drop your art here to Add more Images</p>
+                                   <p className="text-sm font-bold text-black max-[768px]:text-xs">Drag and drop your art here to Add more Images</p>
                                     <p className="text-sm font-bold text-black dark:text-gray-400 my-6 max-[768px]:text-xs max-[768px]:my-2">or</p>
                                     <p className="text-white bg-blue-500 focus:ring-2 focus:ring-blue-500 font-medium rounded-full  px-7 mr-2 mb-2 dark:bg-blue-400 dark:hover:bg-blue-400 focus:outline-none dark:focus:ring-blue-500 py-1.5 max-[768px]:text-xs max-[768px]:py-1.5 max-[768px]:px-2.5">Choose a File</p>
-                                </div>
+                                 </div>
                                 <input {...getInputProps()} id="dropzone-file" type="file" />
                             </label>
                         </div>

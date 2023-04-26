@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { AxiosInstance } from '../utils'
 import { useForm } from "react-hook-form";
 import MyDropzone from '../components/DropZone.js'
@@ -6,32 +7,32 @@ import TagInput from '../components/TagInput';
 export default function AddArtwork() {
     const [files, setFiles] = React.useState([]);
     const [tags, setTags] = React.useState([]);
-    React.useEffect(() => {
-        async function getData() {
-            const data = await AxiosInstance(
-                {
-                    'url': '/hi',
-                    'method': 'get'
-                }
-            )
-        }
-        getData()
-    }, [])
-
+    const [success, setSuccess] = React.useState();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const  navigate = useNavigate();
     const onSubmit = data => {
+        data.tags = tags;
+        data.image = files;
 
         async function getData() {
-            const data2 = await AxiosInstance(
+          
+            const result = await AxiosInstance(
                 {
-                    'url': '/hi',
+                    'url': '/add-artwork',
                     'method': 'post',
-                    'data': { data }
+                    'data': data
                 }
             )
+            if (result.status === 200) {
+                console.log(result.status)
+                setSuccess('Data added succesfully')
+                navigate('/artwork')
+                
+            }
         }
         getData()
     };
+
     const handleImages = {
         files,
         setFiles,
@@ -47,7 +48,7 @@ export default function AddArtwork() {
         <>
 
             <div className="max-[612px]:pt-8 pt-20 sm:ml-48 min-[612px]:top-20 bg-gray-200 h-full " >
-
+                {/* {success} */}
                 <h2 className="dark:text-black text-3xl  mb-4 px-6" >Add Artwork</h2>
                 <div className="p-4 border-1 border-blue-400 border-dashed mx-6 rounded-lg dark:border-blue-700 h-full top-20 bg-white">
                     <h2 className="text-sm font-bold text-black mb-4">Upload Image</h2>
@@ -57,7 +58,7 @@ export default function AddArtwork() {
 
                             <MyDropzone {...handleImages} multiple={true} />
                             <div className='min-[480px]:grid grid-cols-2 gap-12'>
-                                <div className="">
+                                <div className=" ">
 
                                     <div className="w-full mt-12   bg-white dark:bg-white dark:border-blue-600">
 
@@ -114,16 +115,16 @@ export default function AddArtwork() {
 
                                             </div>
                                             <p className="text-sm font-bold text-gray-700 ml-5">Signature</p>
-                                            <input type="checkbox" {...register("signature")} className="ml-10 mr-10 text-blue-500 max-[768px]:ml-6 max-[768px]:mb-2 border-2 border-blue-500 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold  text-md   dark:bg-blue-600" name="medium" />
+                                            <input type="checkbox" {...register("signature")} className="ml-10 mr-10 text-blue-500 max-[768px]:ml-6 max-[768px]:mb-2 border-2 border-blue-500 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold  text-md   dark:bg-blue-600" />
                                         </div>
                                         <div className="">
                                             <p className="text-sm font-bold text-gray-700 ml-4 min-[480px]:mt-2">Visibility</p>
 
-                                            <select defaultValue="" {...register("Private", {
+                                            <select defaultValue="" {...register("visiblity", {
                                                 required: true
                                             })} className="w-full text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-5 py-2.5 inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                <option>Private</option>
-                                                <option>Public</option>
+                                                <option value="private">Private</option>
+                                                <option value="public">Public</option>
                                             </select>
 
                                             {errors.Private && <span className='text-red-500'>This field is required</span>}
@@ -166,7 +167,7 @@ export default function AddArtwork() {
                                         <option>Feets</option>
                                     </select>
 
-                                    <input type="number" className="max-[768px]:ml-0 max-[1024px]:ml-1 ml-6 mr-6 text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600 w-36" name="medium" placeholder="8,500.00" />
+                                    <input type="number" {...register("salery")} className="max-[768px]:ml-0 max-[1024px]:ml-1 ml-6 mr-6 text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600 w-36" placeholder="8,500.00" />
                                     <select defaultValue="" {...register("IncomeType", {
                                         required: true
                                     })} className=" text-black  border-2 border-blue-200 mt-3  pr-5 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -189,7 +190,7 @@ export default function AddArtwork() {
                                         </div>
                                     </div>
                                     <p className="text-sm font-bold text-gray-700 mt-6 ml-5 ">Editions</p>
-                                    <input type="checkbox" {...register("editions")} className="max-[768px]:mb-6 min-[480px]:max-[992px]:mt-0  ml-10 mr-10 text-blue-500  border-2 border-blue-500 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold text-md   dark:bg-blue-600" name="medium" />
+                                    <input type="checkbox" {...register("editions")} className="max-[768px]:mb-6 min-[480px]:max-[992px]:mt-0  ml-10 mr-10 text-blue-500  border-2 border-blue-500 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold text-md   dark:bg-blue-600" />
                                     <input {...register("editionFrom")} className=" text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold w-14 rounded-lg text-md py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-6 min-[480px]:mr-1 max-[992px]:mr-1 " type="text" placeholder="13"></input>
                                     /
                                     <input {...register("editionTo")} className=" text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold w-14 rounded-lg text-md py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-6 min-[480px]:ml-1 max-[992px]:ml-1" type="text" placeholder="50"></input>

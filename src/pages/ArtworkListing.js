@@ -8,10 +8,6 @@ import { AiOutlineEllipsis } from "react-icons/ai";
 export default function ArtworkListing() {
     return (
         <>
-
-
-           
-
             <div className="min-[480px]:pt-10 sm:ml-48 min-[480px]:top-20 bg-gray-200 h-full" >
             <div className="grid grid-cols-6">
                     <div className='flex col-span-5 ...'>

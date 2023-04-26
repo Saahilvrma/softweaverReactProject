@@ -3,15 +3,17 @@ import { IoMdMail } from "react-icons/io";
 import { IoIosCall } from "react-icons/io";
 import { IoIosHome } from "react-icons/io";
 import { IoIosLink } from "react-icons/io";
-import {  Modal } from 'flowbite-react';
+import { Modal } from 'flowbite-react';
 
 import { CiCircleRemove } from "react-icons/ci";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import TagInput from '../components/TagInput';
+import { AxiosInstance } from '../utils';
 
 
 export default function NewContact() {
     const [showModal, setShowModal] = React.useState(false);
+   
     const handleOnClick = () => {
         setShowModal(true)
     }
@@ -19,14 +21,24 @@ export default function NewContact() {
         setShowModal(false)
     }
 
-    const [file, setFile] = React.useState();
-    const [tags, setTags] = React.useState([]);
+    const [files, setfiles] = React.useState();
+    const [tags, settags] = React.useState([]);
+    const [tagLabel, setTagLabel] = React.useState([]);
+    const [success, setSuccess] = React.useState();
+
     const handleTags = {
         tags,
-        setTags
+        settags,
+        tagLabel,
+        setTagLabel
     }
     function handleChange(e) {
-        setFile(URL.createObjectURL(e.target.files[0]));
+        setfiles(URL.createObjectURL(e.target.files[0]));
+    }
+
+    function handleTagChange(e) {
+        setTagLabel(e.target.value);
+        setShowModal(false)
     }
     const { register, control, handleSubmit, formState: { errors } } = useForm({
         // defaultValues: {}; you can populate the fields by this attribute 
@@ -48,6 +60,31 @@ export default function NewContact() {
         name: "address"
     });
 
+    const onSubmit = data => {
+
+        data.image = files;
+
+        async function getData() {
+            const result = await AxiosInstance(
+                {
+                    'url': '/add-contacts',
+                    'method': 'post',
+                    'data': data
+                }
+            )
+            if (result.status === 200) {
+                console.log(result.status)
+                setSuccess('Data added succesfully')
+            }
+        }
+        getData()
+    };
+    const handleImages = {
+        files,
+        setfiles,
+        tags,
+        settags
+    }
 
     return (
         <>
@@ -60,14 +97,16 @@ export default function NewContact() {
                 <div className="p-4 border-1 border-blue-400 border-dashed mx-6 rounded-lg dark:border-blue-700 h-full top-20 bg-white">
                     <div className="mt-16 ml-16 mr-16 mb-16">
                         <div className="">
-                            <div className=" inline-flex">
-                                <div className="w-28">
-
-
-                                    <img className="w-28 h-28 rounded-full" src={file} alt="Girl in a jacket" />
+                            <div className="inline-flex">
+                                {/* <div className="w-28">
+                                    <img className="w-28 h-28 rounded-full" {...handleImages} src={file} alt="Girl in a jacket" />
                                     <input type="file" onChange={handleChange} className="w-28 mt-4" />
-                                </div>
-                                <form onSubmit={handleSubmit(data => console.log(data))}>
+                                </div> */}
+                                <form onSubmit={handleSubmit(onSubmit)} className=' inline-flex'>
+                                    <div className="w-28">
+                                        <img className="w-28 h-28 rounded-full" {...handleImages} src={files} alt="Girl in a jacket" />
+                                        <input type="file" onChange={handleChange} className="w-28 mt-4" />
+                                    </div>
                                     <div className=''>
 
                                         <div className="ml-12  inline-flex  mt-4 mb-4 w-full">
@@ -168,7 +207,7 @@ export default function NewContact() {
                                                                     name={`phoneNumber.${index}.phone`}
                                                                     control={control}
                                                                 />
-                                                                {/* <Controller
+                                                                {/*<Controller
                                                             render={({ field1 }) => <input className="text-black h-11 border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2" {...field1}  placeholder='Phone Number'/>}
                                                             name={`test1.${index1}.phone`} 
                                                             control={control}
@@ -200,7 +239,7 @@ export default function NewContact() {
                                                         <li key={item.id}>
                                                             <div className='flex mt-4 justify-between items-center'>
                                                                 <span className='mt-6 mr-4'><IoIosLink size={30} color='gray' /></span>
-                                                                <select className="mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                <select className="mt-4 text-black  border-2 border-blue-200 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                                     <option >Work</option>
                                                                     <option >Personal</option>
                                                                 </select>
@@ -210,10 +249,10 @@ export default function NewContact() {
                                                                     control={control}
                                                                 />
                                                                 {/* <Controller
-                                                            render={({ field2 }) => <input className="text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2 h-11" {...field2}  placeholder='Website'/>}
-                                                            name={`test2.${index}.webistes`} 
-                                                            control={control}
-                                                            /> */}
+                                                                    render={({ field2 }) => <input className="text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 rounded-lg text-md px-4 dark:bg-blue-600 w-60 ml-2 h-11" {...field2}  placeholder='Website'/>}
+                                                                    name={`test2.${index}.webistes`} 
+                                                                    control={control}
+                                                                    /> */}
                                                                 <button type="button" onClick={() => removeForWebsite(index)}><CiCircleRemove size={20} color='DodgerBlue' /></button>
                                                             </div>
                                                         </li>
@@ -269,8 +308,8 @@ export default function NewContact() {
                                                             <div className='flex mt-4 '>
                                                                 <span className='mt-6 mr-4'><IoIosHome size={30} color='gray' /></span>
                                                                 {/* <select  className="h-12 mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" control={control}>
-                                                            <option value="work">Work</option>
-                                                            <option value="personal">Personal</option> </select> */}
+                                                                    <option value="work">Work</option>
+                                                                    <option value="personal">Personal</option> </select> */}
 
                                                                 <Controller
                                                                     render={({ field }) => <select className="h-12 mt-4 text-black  border-2 border-blue-200  bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  {...field} > <option value="work">Work</option>
@@ -322,50 +361,50 @@ export default function NewContact() {
                                                 <div className="min-[480px]:ml-12 mt-6 hauser  mb-4 border-2 border-blue-200  rounded-xl bg-white dark:bg-white dark:border-blue-600">
                                                     {/* <IoIosCheckmarkCircleOutline size={28} color='DodgerBlue' /> */}
                                                     <span className="">
-                                                    <TagInput {...handleTags} className="" labelField={'test12'} />
-                                                    <span className='cursor-pointer absolute right-side'><input type="checkbox" className="text-white border-blue-600 bg-blue-600 hover:bg-blue-600 checked:bg-blue-600 dark:bg-blue-600 focus:ring-offset-2 focus:ring-0 focus:border-blue-600  font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1" defaultChecked={true}  onClick={handleOnClick}></input></span>
+                                                        <TagInput {...handleTags} className="" labelField={tagLabel} />
+                                                        <span className='cursor-pointer absolute right-side'><input type="checkbox" className="text-white border-blue-600 bg-blue-600 hover:bg-blue-600 checked:bg-blue-600 dark:bg-blue-600 focus:ring-offset-2 focus:ring-0 focus:border-blue-600  font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1" defaultChecked={true} onClick={handleOnClick}></input></span>
                                                     </span>
 
                                                     <Modal show={showModal} size="sm" onClose={handleOnClose}>
                                                         <Modal.Body>
-                                                            <div className="space-y-6 w-34">    
-                                                                    <div className='ml-2 mr-2 bg-white'> 
-                                                                        <span className='flex'>
-                                                                            <input type="checkbox" className="text-white border-red-400 bg-red-400 checked:bg-red-400 hover:bg-red-500 focus:ring-0 focus:ring-offset-2 focus:border-red-400 focus:bg-red-400   font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
-                                                                            <p className='font-bold text-sm mt-1 ml-3' >Important</p>
-                                                                        </span>
-                                                                        <span className='flex '>
-                                                                            <input type="checkbox" className="text-white border-amber-500 bg-amber-500 hover:bg-amber-500 checked:bg-amber-500 dark:bg-amber-500 focus:ring-offset-2 focus:ring-0 focus:border-amber-500  font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
-                                                                            <p className='font-bold text-sm mt-1 ml-3' >Personal</p>
-                                                                        </span>
-                                                                        <span className='flex '>
-                                                                            <input type="checkbox" className="text-white border-yellow-300 bg-yellow-300 checked:bg-yellow-300 hover:bg-yellow-300 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
-                                                                            <p className='font-bold text-sm mt-1 ml-3' >2020 Goals</p>
-                                                                        </span>
-                                                                        <span className='flex '>
-                                                                            <input type="checkbox" className="text-white border-emerald-400 bg-emerald-400 checked:bg-emerald-400 hover:bg-emerald-400 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
-                                                                            <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
-                                                                        </span>
-                                                                        <span className='flex '>
-                                                                            <input type="checkbox" className="text-white border-blue-600 bg-blue-600 checked:bg-blue-600 hover:bg-blue-600 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1"></input>
-                                                                            <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
-                                                                        </span>
-                                                                        <span className='flex '>
-                                                                            <input type="checkbox" className="text-white border-fuchsia-400 bg-fuchsia-400 checked:bg-fuchsia-400 hover:bg-fuchsia-400 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1"></input>
-                                                                            <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
-                                                                        </span>
-                                                                        <span className='flex '>
-                                                                            <input type="checkbox" className="text-white border-stone-400 bg-stone-400 checked:bg-stone-400 hover:bg-stone-400 focus:ring-0 focus:ring-offset-0 focus:ring-none  font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
-                                                                            <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
-                                                                        </span>
-                                                                        <span className='flex cursor-pointer ' onClick={handleOnClose}> 
-                                                                            <p className='font-bold text-blue-500 italic text-sm mt-1 ml-3' >Manage Labels</p>
-                                                                        </span>
+                                                            <div className="space-y-6 w-34">
+                                                                <div className='ml-2 mr-2 bg-white'>
+                                                                    <span className='flex'>
+                                                                        <input type="radio" value="important" onChange={handleTagChange} name="tagLabel" className="text-white border-red-400 bg-red-400 checked:bg-red-400 hover:bg-red-500 focus:ring-0 focus:ring-offset-2 focus:border-red-400 focus:bg-red-400   font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
+                                                                        <p className='font-bold text-sm mt-1 ml-3' >Important</p>
+                                                                    </span>
+                                                                    <span className='flex '>
+                                                                        <input type="radio" value="personal" onChange={handleTagChange} name="tagLabel" className="text-white border-amber-500 bg-amber-500 hover:bg-amber-500 checked:bg-amber-500 dark:bg-amber-500 focus:ring-offset-2 focus:ring-0 focus:border-amber-500  font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
+                                                                        <p className='font-bold text-sm mt-1 ml-3' >Personal</p>
+                                                                    </span>
+                                                                    <span className='flex '>
+                                                                        <input type="radio" value="goals2020" onChange={handleTagChange} name="tagLabel" className="text-white border-yellow-300 bg-yellow-300 checked:bg-yellow-300 hover:bg-yellow-300 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
+                                                                        <p className='font-bold text-sm mt-1 ml-3' >2020 Goals</p>
+                                                                    </span>
+                                                                    <span className='flex '>
+                                                                        <input type="radio" value="unlabled" onChange={handleTagChange} name="tagLabel" className="text-white border-emerald-400 bg-emerald-400 checked:bg-emerald-400 hover:bg-emerald-400 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
+                                                                        <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
+                                                                    </span>
+                                                                    <span className='flex '>
+                                                                        <input type="radio" balue="unlabled" onChange={handleTagChange} name="tagLabel" className="text-white border-blue-600 bg-blue-600 checked:bg-blue-600 hover:bg-blue-600 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1"></input>
+                                                                        <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
+                                                                    </span>
+                                                                    <span className='flex '>
+                                                                        <input type="radio" balue="unlabled" onChange={handleTagChange} name="tagLabel" className="text-white border-fuchsia-400 bg-fuchsia-400 checked:bg-fuchsia-400 hover:bg-fuchsia-400 focus:ring-0 focus:ring-offset-0 focus:ring-none font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1"></input>
+                                                                        <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
+                                                                    </span>
+                                                                    <span className='flex '>
+                                                                        <input type="radio" balue="unlabled" onChange={handleTagChange} name="tagLabel" className="text-white border-stone-400 bg-stone-400 checked:bg-stone-400 hover:bg-stone-400 focus:ring-0 focus:ring-offset-0 focus:ring-none  font-medium rounded-full text-sm px-4 py-4 text-center mr-1 mb-1 "></input>
+                                                                        <p className='font-thin  italic text-sm mt-1 ml-3' >Unlabeled</p>
+                                                                    </span>
+                                                                    <span className='flex cursor-pointer ' onClick={handleOnClose}>
+                                                                        <p className='font-bold text-blue-500 italic text-sm mt-1 ml-3' >Manage Labels</p>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </Modal.Body>
                                                     </Modal>
-                                                
+
                                                     <div className="px-4 py-2 bg-white rounded-xl dark:bg-gray-800">
 
                                                         <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-14">
