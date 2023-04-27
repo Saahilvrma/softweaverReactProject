@@ -9,13 +9,13 @@ export default function AddArtwork() {
     const [tags, setTags] = React.useState([]);
     const [success, setSuccess] = React.useState();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const  navigate = useNavigate();
+    const navigate = useNavigate();
     const onSubmit = data => {
         data.tags = tags;
         data.image = files;
 
         async function getData() {
-          
+
             const result = await AxiosInstance(
                 {
                     'url': '/add-artwork',
@@ -26,8 +26,12 @@ export default function AddArtwork() {
             if (result.status === 200) {
                 console.log(result.status)
                 setSuccess('Data added succesfully')
-                navigate('/artwork')
-                
+      
+                alert('Data added succesfully')
+                setTimeout(() => {
+                    navigate("/artwork");
+                  }, 3000);
+
             }
         }
         getData()
@@ -162,9 +166,9 @@ export default function AddArtwork() {
                                     <p className="text-sm font-bold text-blue-500 ml-2 mt-8 mb-6">+ Add Framed Size</p>
                                     <p className="text-sm font-bold text-gray-700 mt-6 ml-5">Status</p>
                                     <select defaultValue="" {...register("availability")} className=" text-black  border-2 border-blue-200 mt-3 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md pl-2 py-2.5 pr-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        <option>Available</option>
-                                        <option>Square</option>
-                                        <option>Feets</option>
+                                        <option value="Available">Available</option>
+                                        <option value="Not available">Square</option>
+
                                     </select>
 
                                     <input type="number" {...register("salery")} className="max-[768px]:ml-0 max-[1024px]:ml-1 ml-6 mr-6 text-black  border-2 border-blue-200 mt-3 bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5  dark:bg-blue-600 w-36" placeholder="8,500.00" />
@@ -172,8 +176,8 @@ export default function AddArtwork() {
                                         required: true
                                     })} className=" text-black  border-2 border-blue-200 mt-3  pr-5 bg-white hover:bg-white focus:ring-2 focus:outline-none focus:ring-blue-500 font-bold rounded-lg text-md px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         <option>USD</option>
-                                        <option>Square</option>
-                                        <option>Feets</option>
+                                        <option>CAD</option>
+                                        <option>INR</option>
                                     </select>
                                     {errors.IncomeType && <span className='text-red-500'>This field is required</span>}
 

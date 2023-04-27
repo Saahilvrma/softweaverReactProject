@@ -7,7 +7,19 @@ import { BiPlusCircle  } from "react-icons/bi";
 import { BiEdit  } from "react-icons/bi";
 import { BiWallet  } from "react-icons/bi";
 import { MdViewAgenda } from "react-icons/md";
+import axios from "axios";
 export default function ArtworkGrid() {
+    const [getResult, setResult] = React.useState([]);
+    const fetchInfo = () => {
+        return axios.get('http://127.0.0.1:3000/api/v1/get-artwork').then((res) => setResult(res.data));
+    };
+
+    React.useEffect(() => {
+        fetchInfo();
+    }, []);
+
+
+    console.log(getResult.data)
   return (
 
     <>
@@ -19,9 +31,9 @@ export default function ArtworkGrid() {
                     <div className='min-[480px]:flex col-span-5 ...'>
                         <span className='flex'>
                             <h2 className="dark:text-black text-4xl  mt-2 px-6" >Pieces</h2>
-                            <a href="/artwork/listing"  className='mt-7 mr-3'><MdViewAgenda size={19} /></a>
+                            <a href="/artwork"  className='mt-7 mr-3'><MdViewAgenda size={19} /></a>
                             <a href="/artwork/grid"  className='mt-7 mr-3'><FaThLarge /></a>
-                            <a href="/artwork"  className='mt-7 mr-3'><FaThList /></a>
+                            <a href="/artwork/listing"  className='mt-7 mr-3'><FaThList /></a>
                        </span>
                        <form className="flex items-center">
                             <label htmlFor="voice-search" className="sr-only">Search</label>
@@ -71,7 +83,30 @@ export default function ArtworkGrid() {
                 </div>
 
                 <div className="p-4 border-1 border-blue-400 border-dashed mx-6 rounded-lg dark:border-blue-700 h-full top-20 bg-white">
-                    <div className="min-[480px]:grid grid-cols-4 gap-6">
+                        <div className="min-[480px]:grid grid-cols-4 gap-6">
+                            {getResult.data && getResult.data.map((data, index) => {
+                                return (
+                                
+
+                                <div className="max-[1024px]:col-span-2 col-span-1 ...">
+                                    <div className="mt-5 mb-5 ml-2 mr-2">
+                                        <img className="h-40 rounded-lg w-full" src={data.image[0] ? data.image[0] : '/rose.jpg'} alt="Girl in a jacket" />
+                                        <p className='text-md font-extrabold mt-2 ml-2'>{data.Title}</p>
+
+                                    </div>
+                                </div>
+                                );
+                            })}
+                        </div>
+                           
+
+                                
+
+                  
+                  
+                  
+                  
+                    {/* <div className="min-[480px]:grid grid-cols-4 gap-6">
 
                         <div className="max-[1024px]:col-span-2 col-span-1 ...">
                             <div className="mt-5 mb-5 ml-2 mr-2">
@@ -166,7 +201,7 @@ export default function ArtworkGrid() {
                             </div>
                         </div>
                     
-                    </div>
+                    </div> */}
                   
                 </div>
             </div>

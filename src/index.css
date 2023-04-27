@@ -126,3 +126,35 @@ line-height: 45px;
   bottom:6px;
 
 }
+.relative.h-full.w-full.p-4.md\:h-auto.max-w-sm {
+  width: 17% !important;
+  margin-left: 80%;
+    margin-top: 20%;
+}
+.right-side{
+  right:100px;
+  bottom:6px;
+}
+.tag-wrapper.personal{
+      --tw-bg-opacity: 1;
+    background-color: rgb(245 158 11 / var(--tw-bg-opacity)) !important;
+}
+.tag-wrapper.important{
+      --tw-bg-opacity: 1;
+    background-color: rgb(249 128 128 / var(--tw-bg-opacity)) !important;
+}
+.tag-wrapper.goals2020{
+      --tw-bg-opacity: 1;
+        background-color: rgb(250 202 21 / var(--tw-bg-opacity)) !important;
+}
+.tag-wrapper.goals2020{
+      --tw-bg-opacity: 1;
+        background-color: rgb(250 202 21 / var(--tw-bg-opacity)) !important;
+}
+.tag-wrapper.unlabled{
+      --tw-bg-opacity: 1;
+       background-color: rgb(52 211 153 / var(--tw-bg-opacity)) !important;
+}
+.types{
+  width:300px;
+}

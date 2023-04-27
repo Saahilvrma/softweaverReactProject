@@ -4,7 +4,7 @@ import { IoIosCall } from "react-icons/io";
 import { IoIosHome } from "react-icons/io";
 import { IoIosLink } from "react-icons/io";
 import { Modal } from 'flowbite-react';
-
+import { useNavigate } from "react-router-dom";
 import { CiCircleRemove } from "react-icons/ci";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import TagInput from '../components/TagInput';
@@ -13,7 +13,7 @@ import { AxiosInstance } from '../utils';
 
 export default function NewContact() {
     const [showModal, setShowModal] = React.useState(false);
-   
+
     const handleOnClick = () => {
         setShowModal(true)
     }
@@ -22,19 +22,33 @@ export default function NewContact() {
     }
 
     const [files, setfiles] = React.useState();
-    const [tags, settags] = React.useState([]);
+    const [tags, setTags] = React.useState([]);
     const [tagLabel, setTagLabel] = React.useState([]);
     const [success, setSuccess] = React.useState();
 
     const handleTags = {
         tags,
-        settags,
+        setTags,
         tagLabel,
         setTagLabel
     }
+
+
     function handleChange(e) {
-        setfiles(URL.createObjectURL(e.target.files[0]));
+        let response = ""
+
+        let filesItem = e.target.files;
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(filesItem[0]);
+
+        fileReader.onload = (event) => {
+            response = fileReader.result
+            setfiles(response)
+        }
+
     }
+
+
 
     function handleTagChange(e) {
         setTagLabel(e.target.value);
@@ -59,7 +73,7 @@ export default function NewContact() {
         control,
         name: "address"
     });
-
+    const navigate = useNavigate();
     const onSubmit = data => {
 
         data.image = files;
@@ -74,7 +88,10 @@ export default function NewContact() {
             )
             if (result.status === 200) {
                 console.log(result.status)
-                setSuccess('Data added succesfully')
+                alert('Data added succesfully')
+                setTimeout(() => {
+                    navigate("/contact");
+                  }, 3000);
             }
         }
         getData()
@@ -83,7 +100,7 @@ export default function NewContact() {
         files,
         setfiles,
         tags,
-        settags
+        setTags
     }
 
     return (
@@ -104,7 +121,7 @@ export default function NewContact() {
                                 </div> */}
                                 <form onSubmit={handleSubmit(onSubmit)} className=' inline-flex'>
                                     <div className="w-28">
-                                        <img className="w-28 h-28 rounded-full" {...handleImages} src={files} alt="Girl in a jacket" />
+                                        <img className="w-28 h-28 rounded-full" {...handleImages} src={files ? files : '/profile.png'} alt="Profile Image" />
                                         <input type="file" onChange={handleChange} className="w-28 mt-4" />
                                     </div>
                                     <div className=''>
@@ -220,7 +237,6 @@ export default function NewContact() {
 
                                                 <button className="text-sm font-bold text-blue-500 ml-16 mt-4 mb-2" type="button"
                                                     onClick={() => appendForPhone({ phone: "", typeoOF: "work" })}>+ Add Phone Number</button>
-
 
                                                 <div className='flex mt-2 justify-between items-center'>
                                                     <span className='mt-6 mr-4'><IoIosLink size={30} color='gray' /></span>

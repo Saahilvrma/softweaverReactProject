@@ -10,16 +10,16 @@ function TagInput(props) {
 
     const delimiters = [KeyCodes.comma, KeyCodes.enter, KeyCodes.tab];
 
-    const { tags, setTags, labelField } = props
+    const { tags, setTags, tagLabel, setTagLabel } = props
 
     const handleDelete = i => {
         setTags(tags.filter((tag, index) => index !== i));
     };
 
     const handleAddition = tag => {
-        tag.label = labelField;
+        tag.className = tagLabel;
         setTags([...tags, tag]);
-        console.log(tags)
+        // setTagLabel('')
     };
 
     const handleDrag = (tag, currPos, newPos) => {
@@ -36,12 +36,19 @@ function TagInput(props) {
         console.log('The tag at index ' + index + ' was clicked');
     };
 
+    const suggestions = [
+
+        // { id: "1", text: "mango", className: 'mango13' },
+        // { id: "2", text: "pineapple" },
+        // { id: "3", text: "orange" },
+        // { id: "4", text: "pear" }
+    ];
     return (
         <>
             <div>
                 <ReactTags
                     tags={tags}
-                    // suggestions={suggestions}
+                    suggestions={suggestions}
                     delimiters={delimiters}
                     handleDelete={handleDelete}
                     handleAddition={handleAddition}
@@ -50,8 +57,9 @@ function TagInput(props) {
                     inputFieldPosition="top"
                     autocomplete
                     placeholder='Add tag'
-                   
-
+                    classNames={{
+                        remove: tagLabel
+                    }}
                 />
             </div>
         </>

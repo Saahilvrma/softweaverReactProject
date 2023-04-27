@@ -1,12 +1,28 @@
 import React from 'react'
 import { IoFilterOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
+import axios from "axios";
 
 export default function Contacts() {
+    const [getResult, setResult] = React.useState([]);
+
+
+
+    const fetchInfo = () => {
+        return axios.get('http://127.0.0.1:3000/api/v1/get-contacts').then((res) => setResult(res.data));
+    };
+
+    React.useEffect(() => {
+        fetchInfo();
+    }, []);
+
+
+
+
     return (
         <>
 
-      
+
             <div className="min-[480px]:pt-10 sm:ml-48 min-[480px]:top-10 bg-gray-200 h-full" >
                 <div className="min-[480px]:grid grid-cols-6">
                     <div className='min-[480px]:flex col-span-5 ...'>
@@ -47,7 +63,7 @@ export default function Contacts() {
 
                     <div className='min-[480px]:flex '>
                         <input type="text" id="voice-search" className="ml-8 w-36 placeholder-gray-400 bg-transparent border-2 border-gray-300 text-gary text-sm rounded-full focus:ring-gary-400 focus:border-gray-400 block  pl-7 pr-7 p-1  placeholder-text-gray dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Group Email" readOnly />
-                              
+
                         <span className="text-sm font-semibold mr-4 ml-6 flex items-center"><IoFilterOutline /> Filter:</span>
                         <select className="text-sm font-semibold bg-transparent mr-2 border-none max-[480px]:ml-4" >
                             <option>Relation</option>
@@ -64,7 +80,7 @@ export default function Contacts() {
                             <option>One</option>
                             <option>Two</option>
                         </select>
-                      
+
                     </div>
                 </div>
 
@@ -92,12 +108,12 @@ export default function Contacts() {
                                             Company
                                         </th>
                                         <th scope="col" className="px-6 py-3">
-                                            
+
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr className="bg-white dark:bg-gray-800 text-gray-700">
+                                    {/* <tr className="bg-white dark:bg-gray-800 text-gray-700">
                                         <td className="pl-0 pr-0 w-10 py-4"><input type="checkbox" className="ml-10 mr-10 text-blue-500 max-[768px]:ml-6 max-[768px]:mb-2 border-2 border-blue-500 mt-3 bg-white font-bold  text-md" name="medium" />
                                         </td>
                                         <td className="pr-6 py-4 flex">
@@ -272,30 +288,42 @@ export default function Contacts() {
                                             McCormick Studios
                                         </td>
                                         <td><span className=''> <FiEdit2 /> </span></td>
-                                    </tr>
-                                    <tr className="bg-white dark:bg-gray-800 text-gray-700">
-                                        <td  className="pl-0 pr-0 w-10 py-4"><input type="checkbox" className="ml-10 mr-10 outline-none text-blue-500 max-[768px]:ml-6 max-[768px]:mb-2 border-2 border-blue-500 mt-3 focus:bg-blue-500 focus:text-blue-500 bg-white text-md" name="medium" />
-                                        </td>
-                                        <td className="pr-6 py-4 flex">
+                                    </tr> */}
 
-                                            <img className="h-12 rounded-full w-12" src="/rose.jpg" alt="Girl in a jacket" />
-                                            <p className="ml-6 mt-4 text-base  font-bold text-black">Trenton Hines</p>
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            Mathew.Wells@AOl.com
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            (863)608-7952
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            Artist
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            McCormick Studios
-                                        </td>
-                                        <td><span className=''> <FiEdit2 /> </span></td>
-                                    </tr>
-                                
+
+
+
+                                    {getResult.data && getResult.data.map((data, index) => {
+                                        return (
+                                            <tr className="bg-white dark:bg-gray-800 text-gray-700">
+                                                <td className="pl-0 pr-0 w-10 py-4"><input type="checkbox" className="ml-10 mr-10 outline-none text-blue-500 max-[768px]:ml-6 max-[768px]:mb-2 border-2 border-blue-500 mt-3 focus:bg-blue-500 focus:text-blue-500 bg-white text-md" name="medium" />
+                                                </td>
+                                                <td className="pr-6 py-4 flex">
+
+                                                    <img className="h-12 rounded-full w-12" src={data.image ? data.image : '/rose.jpg'} alt="Girl in a jacket" />
+                                                    <p className="ml-6 mt-4 text-base  font-bold text-black">{data.FirstName} {data.MiddleName} {data.LastName}</p>
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {data.Email}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {data.PhoneNumber}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {data.Title}
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    {data.Company}
+                                                </td>
+                                                <td><span className=''> <FiEdit2 /> </span></td>
+                                            </tr>
+                                        );
+                                    })}
+
+
+
+
+
                                 </tbody>
                             </table>
                         </div>

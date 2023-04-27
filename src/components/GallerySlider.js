@@ -15,6 +15,7 @@ const images = [
         thumbnail: '/rose.jpg',
     }
 ];
+
 export default function GallerySlider() {
     return (
         <div className="wrapper">
